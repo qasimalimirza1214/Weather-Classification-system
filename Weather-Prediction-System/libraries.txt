@@ -1,0 +1,11 @@
+# Wokwi Library List
+# See https://docs.wokwi.com/guides/libraries
+
+# Automatically added based on includes:
+DHT sensor library
+LiquidCrystal I2C
+
+TensorFlowLite_ESP32
+DHT sensor library for ESPx
+Adafruit GFX Library
+Adafruit SSD1306
