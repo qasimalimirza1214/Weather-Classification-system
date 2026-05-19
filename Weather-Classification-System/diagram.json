@@ -3,161 +3,118 @@
   "author": "Student - LD7182 Weather Classification TinyML System",
   "editor": "wokwi",
   "parts": [
-    {
-      "type": "wokwi-breadboard-half",
-      "id": "bb1",
-      "top": 35.4,
-      "left": -400.4,
-      "attrs": {}
-    },
-
-    {
-      "type": "board-esp32-s3-devkitc-1",
-      "id": "esp",
-      "top": 0,
-      "left": 0,
-      "attrs": {}
-    },
-
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 35.4, "left": -400.4, "attrs": {} },
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
     {
       "type": "wokwi-dht22",
       "id": "dht1",
       "top": -134.1,
       "left": -149.4,
-      "attrs": {
-        "temperature": "30",
-        "humidity": "40"
-      }
+      "attrs": { "temperature": "27", "humidity": "74" }
     },
-
     {
       "type": "wokwi-potentiometer",
       "id": "pot_pressure",
       "top": -135.7,
       "left": 115,
-      "attrs": {
-        "value": "2048"
-      }
+      "attrs": { "value": "2048" }
     },
-
     {
       "type": "wokwi-potentiometer",
       "id": "pot_wind",
       "top": -135.7,
       "left": 201.4,
-      "attrs": {
-        "value": "2048"
-      }
+      "attrs": { "value": "2048" }
     },
-
     {
       "type": "wokwi-potentiometer",
       "id": "pot_precipitation",
       "top": -135.7,
       "left": 28.6,
-      "attrs": {
-        "value": "2048"
-      }
+      "attrs": { "value": "2048" }
     },
-
     {
       "type": "wokwi-potentiometer",
       "id": "pot_visibility",
       "top": -135.7,
       "left": 297.4,
-      "attrs": {
-        "value": "2048"
-      }
+      "attrs": { "value": "2048" }
     },
-
     {
       "type": "wokwi-lcd2004",
       "id": "lcd1",
       "top": 323.2,
       "left": -167.2,
-      "attrs": {
-        "pins": "i2c"
-      }
+      "attrs": { "pins": "i2c" }
     },
-
     {
       "type": "board-ssd1306",
       "id": "oled1",
       "top": -112.06,
       "left": -383.77,
-      "attrs": {
-        "i2cAddress": "0x3c"
-      }
+      "attrs": { "i2cAddress": "0x3c" }
     },
-
-    {
-      "type": "wokwi-rgb-led",
-      "id": "rgb1",
-      "top": 90.4,
-      "left": -277.3,
-      "attrs": {}
-    },
-
+    { "type": "wokwi-rgb-led", "id": "rgb1", "top": 90.4, "left": -277.3, "attrs": {} },
     {
       "type": "wokwi-buzzer",
       "id": "bz1",
       "top": 98.4,
       "left": 261,
-      "attrs": {
-        "volume": "0.1"
-      }
+      "attrs": { "volume": "0.1" }
     }
   ],
-
   "connections": [
-
     [ "esp:TX", "$serialMonitor:RX", "", [] ],
     [ "esp:RX", "$serialMonitor:TX", "", [] ],
-
     [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
     [ "dht1:GND", "esp:GND", "black", [ "v0" ] ],
-    [ "dht1:SDA", "esp:15", "green", [ "v19.2", "h115.3", "v96" ] ],
-
     [ "pot_pressure:VCC", "esp:3V3", "red", [ "v0" ] ],
     [ "pot_pressure:GND", "esp:GND", "black", [ "v0" ] ],
-    [ "pot_pressure:SIG", "esp:1", "green", [ "v0" ] ],
-
     [ "pot_wind:VCC", "esp:3V3", "red", [ "v0" ] ],
     [ "pot_wind:GND", "esp:GND", "black", [ "v0" ] ],
-    [ "pot_wind:SIG", "esp:2", "green", [ "v0" ] ],
-
     [ "pot_precipitation:VCC", "esp:3V3", "red", [ "v0" ] ],
     [ "pot_precipitation:GND", "esp:GND", "black", [ "v0" ] ],
-    [ "pot_precipitation:SIG", "esp:3", "green", [ "v0" ] ],
-
     [ "pot_visibility:VCC", "esp:3V3", "red", [ "v0" ] ],
     [ "pot_visibility:GND", "esp:GND", "black", [ "v0" ] ],
-    [ "pot_visibility:SIG", "esp:4", "green", [ "v0" ] ],
-
-    [ "lcd1:VCC", "esp:3V3", "red", [ "v0" ] ],
     [ "lcd1:GND", "esp:GND", "black", [ "v0" ] ],
-    [ "lcd1:SDA", "esp:8", "green", [ "h-28.8", "v-76.6", "h172.8", "v-153.6" ] ],
-    [ "lcd1:SCL", "esp:9", "green", [ "h-38.4", "v-86.1", "h182.4", "v-124.8" ] ],
-
-    [ "oled1:VCC", "esp:3V3", "red", [ "v0" ] ],
-    [ "oled1:GND", "esp:GND", "black", [ "v0" ] ],
+    [ "lcd1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "esp:3V3.1", "bb1:tp.25", "green", [ "v0" ] ],
+    [ "esp:GND.1", "bb1:tn.25", "black", [ "h-33.88", "v-172.98" ] ],
+    [ "bb1:tp.1", "bb1:bp.1", "red", [ "v0" ] ],
+    [ "bb1:tn.5", "bb1:bn.5", "black", [ "v0" ] ],
+    [ "dht1:GND", "bb1:tn.24", "black", [ "v0" ] ],
+    [ "dht1:VCC", "bb1:tp.21", "red", [ "v0" ] ],
+    [ "dht1:SDA", "esp:15", "green", [ "v19.2", "h115.3", "v96" ] ],
     [ "oled1:SDA", "esp:8", "green", [ "v-38.4", "h297.67", "v268.8" ] ],
     [ "oled1:SCL", "esp:9", "green", [ "v-57.6", "h317.1", "v326.4" ] ],
-
+    [ "pot_precipitation:GND", "bb1:tn.11", "black", [ "v57.6", "h-105.6" ] ],
+    [ "pot_pressure:GND", "bb1:tn.12", "black", [ "v57.6", "h-374.4" ] ],
+    [ "pot_wind:GND", "bb1:tn.13", "black", [ "v57.6", "h-460.8", "v57.6" ] ],
+    [ "pot_visibility:GND", "bb1:tn.14", "black", [ "v57.6", "h-537.6" ] ],
+    [ "pot_precipitation:VCC", "bb1:tp.16", "red", [ "v38.4", "h-269.6" ] ],
+    [ "pot_pressure:VCC", "bb1:tp.17", "red", [ "v38.4", "h-346.4" ] ],
+    [ "pot_wind:VCC", "bb1:tp.18", "red", [ "v38.4", "h-423.2" ] ],
+    [ "pot_visibility:VCC", "bb1:tp.19", "red", [ "v38.4", "h-500" ] ],
+    [ "pot_precipitation:SIG", "esp:1", "green", [ "v0" ] ],
+    [ "pot_pressure:SIG", "esp:2", "green", [ "v0" ] ],
+    [ "pot_wind:SIG", "esp:3", "green", [ "v0" ] ],
+    [ "pot_visibility:SIG", "esp:4", "green", [ "v0" ] ],
+    [ "oled1:VCC", "bb1:tp.4", "red", [ "v-38.4", "h-67.05", "v153.6", "h76.8" ] ],
+    [ "oled1:GND", "bb1:tn.3", "black", [ "v-28.8", "h-38.4", "v115.2", "h-9.6" ] ],
     [ "bz1:2", "esp:17", "green", [ "v57.6", "h-154", "v-124.8", "h-19.2" ] ],
-    [ "bz1:1", "esp:GND", "black", [ "v0" ] ],
-
-    [ "rgb1:COM", "esp:3V3", "red", [ "v0" ] ],
-
-    [ "rgb1:R", "bb1:12b.f", "green", [ "v0" ] ],
+    [ "bz1:1", "bb1:bn.23", "black", [ "v105.6", "h-403.2" ] ],
+    [ "lcd1:GND", "bb1:bn.6", "black", [ "h0" ] ],
+    [ "lcd1:VCC", "bb1:bp.7", "red", [ "h0" ] ],
+    [ "lcd1:SCL", "esp:9", "green", [ "h-38.4", "v-86.1", "h182.4", "v-124.8" ] ],
+    [ "lcd1:SDA", "esp:8", "green", [ "h-28.8", "v-76.6", "h172.8", "v-153.6" ] ],
+    [ "rgb1:COM", "bb1:13b.f", "green", [ "v0" ] ],
     [ "rgb1:G", "bb1:14b.f", "green", [ "v0" ] ],
     [ "rgb1:B", "bb1:15b.f", "green", [ "v0" ] ],
-
+    [ "bb1:13b.g", "bb1:bn.11", "green", [ "v0" ] ],
+    [ "rgb1:R", "bb1:12b.f", "green", [ "v0" ] ],
     [ "bb1:12b.h", "esp:5", "green", [ "v0" ] ],
     [ "bb1:14b.i", "esp:6", "green", [ "v0", "h201.6", "v-105.6" ] ],
-    [ "bb1:15b.j", "esp:16", "green", [ "v0", "h201.6", "v-105.6" ] ]
-
+    [ "bb1:15b.j", "esp:7", "green", [ "v0", "h201.6", "v-105.6" ] ]
   ],
-
   "dependencies": {}
 }
