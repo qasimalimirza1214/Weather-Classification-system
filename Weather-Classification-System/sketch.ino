@@ -412,7 +412,11 @@ void loop() {
         "&field1=" + String(temp) +
         "&field2=" + String(humidity) +
         "&field3=" + String(pressure) +
-        "&field4=" + String(uv);
+        "&field4=" + String(uv) +
+        "&field5=" + String(prediction) +   // Weather Prediction (text)
+        "&field6=" + String(windSpeed) +    // Wind Speed
+        "&field7=" + String(precipitation) + // Precipitation
+        "&field8=" + String(visibility);    // Visibility
 
       http.begin(url);
 
